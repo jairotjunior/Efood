@@ -1,9 +1,10 @@
-import { HeaderHero } from './styles'
+import { HeaderHero, ImagemLogo, Slogan } from './styles'
 import logo from '../../assets/logo.png'
 
 const Header = () => (
   <HeaderHero>
-    <img src={logo} alt="efood" />
+    <ImagemLogo src={logo} alt="efood" />
+    <Slogan>Viva experiências gastronômicas no conforto da sua casa</Slogan>
   </HeaderHero>
 )
 export default Header
