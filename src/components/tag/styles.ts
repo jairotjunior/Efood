@@ -6,7 +6,7 @@ export const TagContainer = styled.div`
   background-color: ${Cores.principal};
   color: ${Cores.amarela};
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 700;
   padding: 4px 6px;
   display: inline-block;
 `

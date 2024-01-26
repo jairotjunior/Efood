@@ -15,6 +15,8 @@ export const Test = styled.ul`
 `
 
 export const Teste = styled.li`
+  background-color: ${Cores.principal};
+
   img {
     padding: 8px;
   }
@@ -33,6 +35,8 @@ export const Teste = styled.li`
 
   ${Notas} {
     margin: 0 8px 8px;
+    font-weight: 900;
+
     img {
       display: none;
     }

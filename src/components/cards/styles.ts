@@ -12,10 +12,14 @@ export const Card = styled.div`
     margin-right: 8px;
   }
 `
+
+export const ImageCards = styled.img`
+  width: 100%;
+`
 export const Infos = styled.div`
   position: absolute;
-  top: 22px;
-  right: 12px;
+  top: 16px;
+  right: 16px;
 `
 
 export const Notas = styled.h3`
@@ -23,6 +27,7 @@ export const Notas = styled.h3`
   justify-content: space-between;
   margin: 8px 7px 16px;
   font-size: 18px;
+  font-weight: 700;
 
   img {
     margin-left: 9px;
@@ -34,6 +39,7 @@ export const SobrePrato = styled.p`
   font-size: 14px;
   margin: auto 8px;
   line-height: 22px;
+  font-weight: 400;
 `
 
 export const Botao = styled.button`
@@ -43,4 +49,5 @@ export const Botao = styled.button`
   border: none;
   padding: 4px 6px;
   cursor: pointer;
+  font-weight: 700;
 `

@@ -19,7 +19,7 @@ export const Slogan = styled.h1`
   text-align: center;
   max-width: 480px;
   margin: 80px auto 0;
-  font-weight: bold;
+  font-weight: 400;
 `
 export const RedesSociais = styled.div`
   display: flex;

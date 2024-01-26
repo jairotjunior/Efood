@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import Tag from '../tag/index'
-import { Card, Botao, Notas, SobrePrato, Infos } from './styles'
+import { Card, Botao, Notas, SobrePrato, Infos, ImageCards } from './styles'
 
 import Estrela from '../../assets/star.png'
 
@@ -27,7 +27,7 @@ const Cards = ({
   link
 }: Props) => (
   <Card>
-    <img src={img} alt={decricaoImg} />
+    <ImageCards src={img} alt={decricaoImg} />
     <Infos>
       {tags.map((tags) => (
         <Tag key={tags}>{tags}</Tag>

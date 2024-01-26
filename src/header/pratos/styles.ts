@@ -9,4 +9,8 @@ export const HeaderHero = styled.div`
   align-items: center;
   padding: 40px 171px 64.5px;
   color: ${Cores.principal};
+
+  h5 {
+    font-weight: 900;
+  }
 `

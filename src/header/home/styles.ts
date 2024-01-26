@@ -18,5 +18,5 @@ export const Slogan = styled.h1`
   text-align: center;
   max-width: 539px;
   margin: 138px auto 0;
-  font-weight: bold;
+  font-weight: 900;
 `
