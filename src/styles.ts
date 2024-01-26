@@ -15,14 +15,10 @@ export const GlobalCss = createGlobalStyle`
     font-family: Roboto, sans-serif;
   }
 
-  body {
-    background-color: ${Cores.fundo};
-
-  }
-
   .container {
-  max-width: 1366px;
-  width: 100%;
-  margin: 0 auto;
-}
+    max-width: 1366px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: ${Cores.fundo};
+  }
 `

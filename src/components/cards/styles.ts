@@ -21,7 +21,7 @@ export const Infos = styled.div`
 export const Notas = styled.h3`
   display: flex;
   justify-content: space-between;
-  margin: 8px 8px 16px 7px;
+  margin: 8px 7px 16px;
   font-size: 18px;
 
   img {
@@ -42,4 +42,5 @@ export const Botao = styled.button`
   margin: 16px 8px 8px;
   border: none;
   padding: 4px 6px;
+  cursor: pointer;
 `
