@@ -11,7 +11,7 @@ type Props = {
   titulo: string
   notas?: number
   descricao: string
-  tags: string[]
+  tags?: string[]
   botao: string
   link: string
 }
@@ -28,11 +28,9 @@ const Cards = ({
 }: Props) => (
   <Card>
     <ImageCards src={img} alt={decricaoImg} />
-    <Infos>
-      {tags.map((tags) => (
-        <Tag key={tags}>{tags}</Tag>
-      ))}
-    </Infos>
+    {!!tags && (
+      <Infos>{tags?.map((tags) => <Tag key={tags}>{tags}</Tag>)}</Infos>
+    )}
     <Notas>
       {titulo}
       <div>

@@ -9,7 +9,9 @@ export const Card = styled.div`
   color: ${Cores.principal};
 
   ${TagContainer} {
-    margin-right: 8px;
+    &:first-child {
+      margin-right: 8px;
+    }
   }
 `
 

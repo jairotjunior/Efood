@@ -15,8 +15,6 @@ export const Test = styled.ul`
 `
 
 export const Teste = styled.li`
-  background-color: ${Cores.principal};
-
   img {
     padding: 8px;
   }
