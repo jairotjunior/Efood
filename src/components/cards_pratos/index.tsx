@@ -1,72 +1,72 @@
 import Cards from '../cards/index'
 
-import Macarrao from '../../assets/Esfiha.png'
-import { Test, Teste } from './styles'
+import Esfiha from '../../assets/Esfiha.png'
+import { Ul, Li } from './styles'
 
 const ListaPratos = () => (
   <section className="fundo">
-    <Test>
-      <Teste>
+    <Ul>
+      <Li>
         <Cards
-          img={Macarrao}
+          img={Esfiha}
           titulo="Pizza Marguerita"
           descricao="A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!"
           decricaoImg="Sushi e creme"
           botao="Adicionar ao carrinho"
           link=""
         />
-      </Teste>
-      <Teste>
+      </Li>
+      <Li>
         <Cards
-          img={Macarrao}
+          img={Esfiha}
           titulo="Pizza Marguerita"
           descricao="A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!"
           decricaoImg="Sushi e creme"
           botao="Adicionar ao carrinho"
           link=""
         />
-      </Teste>
-      <Teste>
+      </Li>
+      <Li>
         <Cards
-          img={Macarrao}
+          img={Esfiha}
           titulo="Pizza Marguerita"
           descricao="A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!"
           decricaoImg="Sushi e creme"
           botao="Adicionar ao carrinho"
           link=""
         />
-      </Teste>
-      <Teste>
+      </Li>
+      <Li>
         <Cards
-          img={Macarrao}
+          img={Esfiha}
           titulo="Pizza Marguerita"
           descricao="A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!"
           decricaoImg="Sushi e creme"
           botao="Adicionar ao carrinho"
           link=""
         />
-      </Teste>
-      <Teste>
+      </Li>
+      <Li>
         <Cards
-          img={Macarrao}
+          img={Esfiha}
           titulo="Pizza Marguerita"
           descricao="A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!"
           decricaoImg="Sushi e creme"
           botao="Adicionar ao carrinho"
           link=""
         />
-      </Teste>
-      <Teste>
+      </Li>
+      <Li>
         <Cards
-          img={Macarrao}
+          img={Esfiha}
           titulo="Pizza Marguerita"
           descricao="A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!"
           decricaoImg="Sushi e creme"
           botao="Adicionar ao carrinho"
           link=""
         />
-      </Teste>
-    </Test>
+      </Li>
+    </Ul>
   </section>
 )
 

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Card, Botao, Notas } from '../cards/styles'
 import { Cores } from '../../styles'
 
-export const Test = styled.ul`
+export const Ul = styled.ul`
   max-width: 1024px;
   margin: 0 auto;
   padding-top: 56px;
@@ -14,7 +14,7 @@ export const Test = styled.ul`
   list-style: none;
 `
 
-export const Teste = styled.li`
+export const Li = styled.li`
   img {
     padding: 8px;
   }
