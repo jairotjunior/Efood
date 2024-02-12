@@ -2,27 +2,53 @@ import styled from 'styled-components'
 import { Card } from '../cards/styles'
 import { Cores } from '../../styles'
 
-export const Te = styled.div`
+export const ConteudoPopup = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  &.visivel {
+    display: flex;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.8);
+  }
+
   ${Card} {
     max-width: 1024px;
     height: 344px;
-    margin-top: 490px;
     background-color: ${Cores.principal};
     color: ${Cores.branca};
     display: grid;
     grid-template-columns: 1fr 2fr;
+    z-index: 1;
   }
 
   img {
     max-width: 280px;
     margin: 32px 24px 32px 32px;
-    grid-row-start: 6;
-    grid-row-end: 1;
-    grid-column-start: 1;
-    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end: 6;
+    grid-column: 1;
 
     &:last-child {
-      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 8px;
+      grid-column: 2;
+      grid-row: 1;
     }
   }
 

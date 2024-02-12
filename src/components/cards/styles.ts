@@ -26,6 +26,10 @@ export const Infos = styled.div`
   right: 16px;
 `
 
+export const Serve = styled.div`
+  margin-top: 16px;
+`
+
 export const Notas = styled.h3`
   display: flex;
   justify-content: space-between;

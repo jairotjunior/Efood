@@ -1,12 +1,12 @@
 import ListaPratos from '../../components/cards_pratos/index'
+import Popup from '../../components/pop_prato'
 import HeaderPratos from '../../header/pratos'
-import Pop from '../../components/pop_prato'
 
 const Pratos = () => (
   <>
     <HeaderPratos />
     <ListaPratos />
-    <Pop />
+    <Popup />
   </>
 )
 

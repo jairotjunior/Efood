@@ -1,10 +1,12 @@
 import Cards from '../cards/index'
 
 import Esfiha from '../../assets/Esfiha_2.png'
-import { Te } from './styles'
+import Fechar from '../../assets/Fechar.png'
 
-const Pop = () => (
-  <Te>
+import { ConteudoPopup } from './styles'
+
+const Popup = () => (
+  <ConteudoPopup>
     <Cards
       img={Esfiha}
       titulo="Pizza Marguerita"
@@ -14,14 +16,15 @@ const Pop = () => (
       A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo
       derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo.
       É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer
-      ocasião.
-
-      Serve: de 2 a 3 pessoas"
+      ocasião."
+      serve="Serve: de 2 a 3 pessoas"
       decricaoImg="Sushi e creme"
       botao="Adicionar ao carrinho - R$ 60,90"
       link=""
+      imgIcon={Fechar}
     />
-  </Te>
+    <div className="overlay"></div>
+  </ConteudoPopup>
 )
 
-export default Pop
+export default Popup

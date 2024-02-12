@@ -1,7 +1,8 @@
 import Cards from '../cards/index'
 
-import Esfiha from '../../assets/Esfiha.png'
 import { Ul, Li } from './styles'
+
+import Esfiha from '../../assets/Esfiha.png'
 
 const ListaPratos = () => (
   <section className="fundo">
