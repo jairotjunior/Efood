@@ -25,7 +25,7 @@ const ListaPratos = () => {
               titulo="Pizza Marguerita"
               descricao="A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!"
               decricaoImg="Sushi e creme"
-              botao="Adicionar ao carrinho"
+              botao="Saiba Mais"
               link=""
               toggleButton={toggleVisivel}
             />
@@ -36,8 +36,9 @@ const ListaPratos = () => {
               titulo="Pizza Marguerita"
               descricao="A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!"
               decricaoImg="Sushi e creme"
-              botao="Adicionar ao carrinho"
+              botao="Saiba Mais"
               link=""
+              toggleButton={toggleVisivel}
             />
           </Li>
           <Li>
@@ -46,8 +47,9 @@ const ListaPratos = () => {
               titulo="Pizza Marguerita"
               descricao="A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!"
               decricaoImg="Sushi e creme"
-              botao="Adicionar ao carrinho"
+              botao="Saiba Mais"
               link=""
+              toggleButton={toggleVisivel}
             />
           </Li>
           <Li>
@@ -56,8 +58,9 @@ const ListaPratos = () => {
               titulo="Pizza Marguerita"
               descricao="A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!"
               decricaoImg="Sushi e creme"
-              botao="Adicionar ao carrinho"
+              botao="Saiba Mais"
               link=""
+              toggleButton={toggleVisivel}
             />
           </Li>
           <Li>
@@ -66,8 +69,9 @@ const ListaPratos = () => {
               titulo="Pizza Marguerita"
               descricao="A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!"
               decricaoImg="Sushi e creme"
-              botao="Adicionar ao carrinho"
+              botao="Saiba Mais"
               link=""
+              toggleButton={toggleVisivel}
             />
           </Li>
           <Li>
@@ -76,8 +80,9 @@ const ListaPratos = () => {
               titulo="Pizza Marguerita"
               descricao="A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!"
               decricaoImg="Sushi e creme"
-              botao="Adicionar ao carrinho"
+              botao="Saiba Mais"
               link=""
+              toggleButton={toggleVisivel}
             />
           </Li>
         </Ul>
