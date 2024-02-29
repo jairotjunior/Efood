@@ -19,6 +19,8 @@ export const Card = styled.div`
 
 export const ImageCards = styled.img`
   width: 100%;
+  max-width: 480px;
+  max-height: 280px;
 `
 export const Infos = styled.div`
   position: absolute;

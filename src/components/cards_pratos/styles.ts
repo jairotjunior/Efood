@@ -17,6 +17,8 @@ export const Ul = styled.ul`
 export const Li = styled.li`
   img {
     padding: 8px;
+    max-height: 167px;
+    object-fit: cover;
   }
 
   ${Card} {

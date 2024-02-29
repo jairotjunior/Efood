@@ -41,7 +41,9 @@ const Cards = ({
   <Card>
     <ImageCards src={img} alt={decricaoImg} />
     {!!tags && (
-      <Infos>{tags?.map((tags) => <Tag key={tags}>{tags}</Tag>)}</Infos>
+      <Infos>
+        {tags?.map((tag: string) => <Tag key={tag} destaque={tag} />)}
+      </Infos>
     )}
     <Notas>
       {titulo}

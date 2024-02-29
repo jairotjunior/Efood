@@ -1,12 +1,12 @@
 import { TagContainer } from './styles'
 
 type Props = {
-  children: string
+  destaque: string
 }
 
-const Tag = ({ children }: Props) => (
+const Tag = ({ destaque }: Props) => (
   <>
-    <TagContainer>{children}</TagContainer>
+    <TagContainer>{destaque}</TagContainer>
   </>
 )
 
