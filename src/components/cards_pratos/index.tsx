@@ -11,12 +11,15 @@ import Fechar from '../../assets/Fechar.png'
 const ListaPratos = () => {
   const [visivel, setVisivel] = useState(false)
   const parametrosRestaurante = useParams()
+  const [detalhePratos, setDetalhePratos] = useState(null)
 
-  const requicisao = DadosRestaurante(Number(parametrosRestaurante.id))
+  const requisicao = DadosRestaurante(Number(parametrosRestaurante.id))
 
-  if (!requicisao) {
+  if (!requisicao) {
     return null
   }
+
+  console.log(requisicao.cardapio)
 
   const toggleVisivel = () => {
     setVisivel(!visivel)
@@ -26,7 +29,7 @@ const ListaPratos = () => {
     <>
       <section className="fundo">
         <Ul>
-          {requicisao.cardapio.map((prato) => (
+          {requisicao.cardapio.map((prato) => (
             <Li key={prato.id}>
               <Cards
                 img={prato.foto}
@@ -42,17 +45,20 @@ const ListaPratos = () => {
         </Ul>
       </section>
       <ConteudoPopup className={visivel ? 'visivel' : ''}>
-        <Cards
-          img={Fechar}
-          titulo={requicisao.titulo}
-          descricao={requicisao.descricao}
-          serve={`Serve: ${requicisao.cardapio}`}
-          decricaoImg=""
-          botao={`Adicionar ao carrinho - R$ ${requicisao.titulo}`}
-          link=""
-          imgIcon={Fechar}
-          toggleButton={toggleVisivel}
-        />
+        {requisicao.cardapio.map((prato) => (
+          <Cards
+            key={prato.id}
+            img={prato.foto}
+            titulo={prato.nome}
+            descricao={prato.descricao}
+            serve={`Serve: ${prato.porcao}`}
+            decricaoImg=""
+            botao={`Adicionar ao carrinho - R$ ${prato.preco}`}
+            link=""
+            imgIcon={Fechar}
+            toggleButton={toggleVisivel}
+          />
+        ))}
         <div onClick={toggleVisivel} className="overlay" />
       </ConteudoPopup>
     </>
