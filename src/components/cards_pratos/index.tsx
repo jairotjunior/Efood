@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import Cards from '../cards/index'
-import { pratosApi, DadosRestaurante, Cardapio } from '../../api'
+import { DadosRestaurante, Cardapio } from '../../api'
 
 import { Ul, Li, ConteudoPopup } from './styles'
 
