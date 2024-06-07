@@ -10,8 +10,10 @@ import {
   ImageCards,
   Serve
 } from './styles'
+import { Cardapio } from '../../api'
 
 type Props = {
+  produto?: Cardapio
   decricaoImg: string
   img: string
   titulo: string
@@ -22,10 +24,11 @@ type Props = {
   link: string
   imgIcon?: string
   serve?: string
-  toggleButton?: () => void
+  toggleButton?: (produto: Cardapio | undefined) => void
 }
 
 const Cards = ({
+  produto,
   img,
   titulo,
   notas,
@@ -40,23 +43,30 @@ const Cards = ({
 }: Props) => (
   <Card>
     <ImageCards src={img} alt={decricaoImg} />
-    {!!tags && (
-      <Infos>
-        {tags?.map((tag: string) => <Tag key={tag} destaque={tag} />)}
-      </Infos>
-    )}
-    <Notas>
-      {titulo}
-      <div>
-        {notas}
-        <img onClick={toggleButton} src={imgIcon} />
-      </div>
-    </Notas>
-    <SobrePrato>{descricao}</SobrePrato>
-    {!!serve && <Serve>{serve}</Serve>}
-    <Link to={link}>
-      <Botao onClick={toggleButton}>{botao}</Botao>
-    </Link>
+    <div>
+      {!!tags && (
+        <Infos>
+          {tags?.map((tag: string) => <Tag key={tag} destaque={tag} />)}
+        </Infos>
+      )}
+      <Notas>
+        {titulo}
+        <div>
+          {notas}
+          <img
+            onClick={() => toggleButton && toggleButton(produto)}
+            src={imgIcon}
+          />
+        </div>
+      </Notas>
+      <SobrePrato>{descricao}</SobrePrato>
+      {!!serve && <Serve>{serve}</Serve>}
+      <Link to={link}>
+        <Botao onClick={() => toggleButton && toggleButton(produto)}>
+          {botao}
+        </Botao>
+      </Link>
+    </div>
   </Card>
 )
 

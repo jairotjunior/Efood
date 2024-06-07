@@ -77,43 +77,43 @@ export const ConteudoPopup = styled.div`
 
   img {
     max-width: 280px;
-    margin: 32px 24px 32px 32px;
-    grid-row-start: 1;
-    grid-row-end: 6;
-    grid-column: 1;
+    height: 280px;
+    margin: 32px 0 32px 32px;
 
     &:last-child {
+      height: 16px;
       position: absolute;
-      top: 0;
+      top: -32px;
       right: 0;
       margin: 8px;
-      grid-column: 2;
-      grid-row: 1;
       cursor: pointer;
     }
   }
 
+  div {
+    position: relative;
+  }
+
   h3 {
-    grid-column: 2;
     margin: 32px 0 16px 0;
   }
 
   p {
     max-width: 656px;
-    grid-column: 2;
-    margin: 0;
+    margin: 0 32px 0 0;
     font-weight: 400;
     color: ${Cores.branca};
   }
 
   a {
-    grid-column: 2;
-
     button {
       background-color: ${Cores.amarela};
       color: ${Cores.principal};
       padding: 4px 7px 4px 7px;
-      margin: 16px 0;
+      margin: 0 0 59px 0;
+      position: absolute;
+      bottom: 0;
+      left: 0;
     }
   }
 `
