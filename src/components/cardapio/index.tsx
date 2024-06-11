@@ -6,12 +6,12 @@ import { DadosApi } from '../../api'
 import Estrela from '../../assets/star.png'
 
 const ListaCardapio = () => {
-  const restaurantes = DadosApi()
+  const restaurante = DadosApi()
 
   return (
     <section className="fundo">
       <Lista>
-        {restaurantes.map((prato) => (
+        {restaurante.map((prato) => (
           <Cards
             key={prato.id}
             img={prato.capa}
