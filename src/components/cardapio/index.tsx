@@ -11,7 +11,7 @@ const ListaCardapio = () => {
   return (
     <section className="fundo">
       <Lista>
-        {restaurante.map((prato) => (
+        {restaurante?.map((prato) => (
           <Cards
             key={prato.id}
             img={prato.capa}

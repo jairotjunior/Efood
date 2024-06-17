@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react'
-
-import { useGetPratosApiQuery } from './services/api'
+import { useGetPratosApiQuery, useGetPratosApiIdQuery } from './services/api'
 
 export interface Cardapio {
   foto: string
@@ -29,13 +27,7 @@ export const DadosApi = () => {
 }
 
 export const DadosRestaurante = (id: number) => {
-  const [restaurantesId, setRestaurantesId] = useState<pratosApi>()
+  const { data } = useGetPratosApiIdQuery(id)
 
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setRestaurantesId(res))
-  }, [id])
-
-  return restaurantesId
+  return data
 }
