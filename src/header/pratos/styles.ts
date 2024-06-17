@@ -12,5 +12,6 @@ export const HeaderHero = styled.div`
 
   h5 {
     font-weight: 900;
+    font-size: 18px;
   }
 `
