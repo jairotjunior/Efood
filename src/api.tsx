@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useGetPratosApiQuery, useGetPratosApiIdQuery } from './services/api'
 
 export interface Cardapio {
   foto: string
@@ -21,25 +21,13 @@ export type pratosApi = {
 }
 
 export const DadosApi = () => {
-  const [restaurantes, setRestaurantes] = useState<pratosApi[]>([])
+  const { data: restaurante } = useGetPratosApiQuery()
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setRestaurantes(res))
-  }, [])
-
-  return restaurantes
+  return restaurante
 }
 
 export const DadosRestaurante = (id: number) => {
-  const [restaurantesId, setRestaurantesId] = useState<pratosApi>()
+  const { data } = useGetPratosApiIdQuery(id)
 
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setRestaurantesId(res))
-  }, [id])
-
-  return restaurantesId
+  return data
 }
