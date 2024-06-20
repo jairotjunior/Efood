@@ -50,6 +50,11 @@ export const SobrePrato = styled.p`
   margin: auto 8px;
   line-height: 22px;
   font-weight: 400;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  text-align: justify;
 `
 
 export const Botao = styled.button`

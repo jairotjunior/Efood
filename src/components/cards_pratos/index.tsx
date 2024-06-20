@@ -16,9 +16,6 @@ const ListaPratos = () => {
   const requisicao = DadosRestaurante(Number(parametrosRestaurante.id))
 
   const getDescricao = (descricao: string) => {
-    if (descricao.length > 89) {
-      return descricao.slice(0, 86) + '...'
-    }
     return descricao
   }
 
