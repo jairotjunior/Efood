@@ -1,14 +1,21 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 import Cards from '../cards/index'
-import { DadosRestaurante, Cardapio } from '../../api'
+import { DadosRestaurante, Cardapio, pratosApi } from '../../api'
+import { add } from '../../store/reducers/garcon'
 
 import { Ul, Li, ConteudoPopup } from './styles'
 
 import Fechar from '../../assets/Fechar.png'
 
-const ListaPratos = () => {
+type Props = {
+  pratos: pratosApi
+}
+
+const ListaPratos = ({ pratos }: Props) => {
+  const dispatch = useDispatch()
   const [visivel, setVisivel] = useState(false)
   const parametrosRestaurante = useParams()
   const [detalhePratos, setDetalhePratos] = useState<Cardapio | undefined>()
@@ -28,6 +35,11 @@ const ListaPratos = () => {
       setDetalhePratos(produto)
     }
     setVisivel(!visivel)
+  }
+
+  const addCarrinho = () => {
+    setVisivel(!visivel)
+    dispatch(add(pratos))
   }
 
   return (
@@ -62,7 +74,8 @@ const ListaPratos = () => {
             botao={`Adicionar ao carrinho - R$ ${detalhePratos.preco}`}
             link=""
             imgIcon={Fechar}
-            toggleButton={toggleVisivel}
+            botaoFechar={toggleVisivel}
+            toggleButton={addCarrinho}
           />
         )}
         <div onClick={() => toggleVisivel} className="overlay" />

@@ -14,9 +14,11 @@ export const HeaderHero = styled.div`
     max-width: 1035px;
   }
 
-  h5 {
+  h5,
+  a {
     font-weight: 900;
     font-size: 18px;
+    cursor: pointer;
   }
 `
 export const Container = styled.div`

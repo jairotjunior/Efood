@@ -3,10 +3,12 @@ import { pratosApi } from '../../api'
 
 type garconState = {
   items: pratosApi[]
+  isOpen: boolean
 }
 
 const initialState: garconState = {
-  items: []
+  items: [],
+  isOpen: false
 }
 
 const sacolaSlice = createSlice({
@@ -15,9 +17,15 @@ const sacolaSlice = createSlice({
   reducers: {
     add: (state, action: PayloadAction<pratosApi>) => {
       state.items.push(action.payload)
+    },
+    open: (state) => {
+      state.isOpen = true
+    },
+    close: (state) => {
+      state.isOpen = false
     }
   }
 })
 
-export const { add } = sacolaSlice.actions
+export const { add, open, close } = sacolaSlice.actions
 export default sacolaSlice.reducer

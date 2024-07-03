@@ -25,6 +25,7 @@ type Props = {
   imgIcon?: string
   serve?: string
   toggleButton?: (produto: Cardapio | undefined) => void
+  botaoFechar?: (produto: Cardapio | undefined) => void
 }
 
 const Cards = ({
@@ -39,7 +40,8 @@ const Cards = ({
   link,
   imgIcon,
   serve,
-  toggleButton
+  toggleButton,
+  botaoFechar
 }: Props) => (
   <Card>
     <ImageCards src={img} alt={decricaoImg} />
@@ -53,10 +55,7 @@ const Cards = ({
         {titulo}
         <div>
           {notas}
-          <img
-            onClick={() => toggleButton && toggleButton(produto)}
-            src={imgIcon}
-          />
+          <img onClick={() => botaoFechar} src={imgIcon} />
         </div>
       </Notas>
       <SobrePrato>{descricao}</SobrePrato>

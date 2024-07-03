@@ -1,12 +1,23 @@
 import { Link, useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 import { DadosRestaurante } from '../../api'
+import { open } from '../../store/reducers/garcon'
 
 import { HeaderHero, ImgRestaurantes, Container, Paragrafo } from './styles'
 
 import logo from '../../assets/logo.png'
+import { useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
 
 const HeaderPratos = () => {
+  const dispatch = useDispatch()
+  const { items } = useSelector((state: RootReducer) => state.garcon)
+
+  const openSacola = () => {
+    dispatch(open())
+  }
+
   const parametrosRestaurante = useParams()
 
   const utilizandoDadosRestaurante = DadosRestaurante(
@@ -25,7 +36,7 @@ const HeaderPratos = () => {
           <Link to="/">
             <img src={logo} alt="efood" />
           </Link>
-          <h5>0 produto(s)no carrinho </h5>
+          <a onClick={openSacola}>{items.length} produto(s) no carrinho</a>
         </div>
       </HeaderHero>
       <Container>

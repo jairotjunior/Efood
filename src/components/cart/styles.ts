@@ -13,6 +13,10 @@ export const CarrinhoConteudo = styled.div`
   justify-content: flex-end;
   z-index: 1;
   color: ${Cores.principal};
+
+  &.is-open {
+    display: flex;
+  }
 `
 
 export const Overlay = styled.div`
