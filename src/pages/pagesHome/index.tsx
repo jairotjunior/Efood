@@ -1,5 +1,5 @@
 import ListaRestaurante from '../../components/listaRestaurantes'
-import Home from '../../home/home'
+import Home from '../../header/home'
 
 const PagesHome = () => {
   return (

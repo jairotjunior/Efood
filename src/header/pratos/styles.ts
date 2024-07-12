@@ -18,6 +18,8 @@ export const HeaderHero = styled.div`
     }
     @media (max-width: ${tamanhosTela.celular}) {
       flex-direction: column;
+      height: 100%;
+      padding: 7% 0;
     }
   }
 
@@ -33,7 +35,7 @@ export const HeaderHero = styled.div`
     @media (max-width: ${tamanhosTela.celular}) {
       width: 100%;
       order: 2;
-      margin: 5%;
+      margin: 2.5% 0;
       text-align: center;
     }
   }

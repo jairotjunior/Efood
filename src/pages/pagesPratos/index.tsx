@@ -1,4 +1,4 @@
-import HeaderPratos from '../../home/pratos'
+import HeaderPratos from '../../header/pratos'
 import ListaPratos from '../../components/cards_pratos/index'
 
 const PagesPratos = () => (

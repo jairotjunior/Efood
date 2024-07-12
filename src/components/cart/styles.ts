@@ -34,8 +34,16 @@ export const Overlay = styled.div`
 export const Sidebar = styled.aside`
   background-color: ${Cores.principal};
   z-index: 1;
-  width: 360px;
+  width: 30%;
   padding: 32px 8px;
+
+  @media (max-width: ${tamanhosTela.tablet}) {
+    width: 40%;
+  }
+
+  @media (max-width: ${tamanhosTela.celular}) {
+    width: 70%;
+  }
 `
 export const Li = styled.li`
   list-style-type: none;

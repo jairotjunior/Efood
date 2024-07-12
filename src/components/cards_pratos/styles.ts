@@ -89,58 +89,26 @@ export const ConteudoPopup = styled.div`
     grid-template-columns: 1fr 2fr;
     z-index: 1;
 
+    .teste {
+      position: relative;
+
+      @media (max-width: ${tamanhosTela.celular}) {
+        height: 265px;
+      }
+    }
+
     @media (max-width: ${tamanhosTela.tablet}) {
       width: 80%;
       height: 45%;
     }
     @media (max-width: ${tamanhosTela.celular}) {
-      display: block;
-      height: 80%;
+      display: inline;
+      height: 450px;
       position: relative;
     }
   }
 
-  img {
-    width: 100%;
-    max-width: 280px;
-    height: 100%;
-    max-height: 280px;
-    margin: 32px 0 32px 32px;
-    object-fit: cover;
-
-    &:last-child {
-      height: 16px;
-      position: absolute;
-      top: -32px;
-      right: 0;
-      margin: 8px;
-      cursor: pointer;
-    }
-
-    @media (max-width: ${tamanhosTela.tablet}) {
-      width: 80%;
-      height: 85%;
-      margin: 16px 0 16px 16px;
-    }
-
-    @media (max-width: ${tamanhosTela.celular}) {
-      width: 100%;
-      max-width: 100%;
-      height: 40%;
-      margin: 0;
-      padding: 16px;
-    }
-  }
-
-  div {
-    position: relative;
-
-    @media (max-width: ${tamanhosTela.celular}) {
-      position: initial;
-    }
-  }
-
-  h3 {
+  ${Notas} {
     margin: 32px 0 16px 0;
 
     @media (max-width: ${tamanhosTela.tablet}) {
@@ -152,8 +120,60 @@ export const ConteudoPopup = styled.div`
     }
   }
 
+  img {
+    max-width: 280px;
+    height: 100%;
+    max-height: 280px;
+    margin: 32px 0 32px 32px;
+    object-fit: cover;
+
+    &:last-child {
+      height: 16px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 8px;
+      cursor: pointer;
+
+      @media (max-width: ${tamanhosTela.tablet}) {
+        height: 16px;
+        top: 0px;
+        cursor: pointer;
+      }
+
+      @media (max-width: ${tamanhosTela.celular}) {
+        width: 16px;
+        height: 16px;
+        bottom: 0;
+        top: 0;
+        cursor: pointer;
+      }
+    }
+
+    @media (max-width: ${tamanhosTela.tablet}) {
+      max-width: 85%;
+      height: 85%;
+      margin: 16px 0 16px 16px;
+    }
+
+    @media (max-width: ${tamanhosTela.celular}) {
+      max-width: 100%;
+      height: 40%;
+      margin: 0;
+      padding: 16px;
+    }
+  }
+
+  div {
+    @media (max-width: ${tamanhosTela.celular}) {
+      position: initial;
+    }
+  }
+
   ${Serve} {
-    margin-left: 16px;
+    @media (max-width: ${tamanhosTela.celular}) {
+      margin-left: 16px;
+    }
   }
 
   ${SobrePrato} {
@@ -173,17 +193,16 @@ export const ConteudoPopup = styled.div`
       background-color: ${Cores.amarela};
       color: ${Cores.principal};
       padding: 4px 7px 4px 7px;
-      margin: 0 0 59px 0;
       position: absolute;
       bottom: 0;
-      left: 0;
+      margin: 0 0 59px 0;
 
       @media (max-width: ${tamanhosTela.tablet}) {
-        margin-bottom: 5%;
+        margin: 0 0 20px 0;
       }
 
       @media (max-width: ${tamanhosTela.celular}) {
-        margin: 16px 0 16px 16px;
+        margin: 0 0 16px 16px;
       }
     }
   }
