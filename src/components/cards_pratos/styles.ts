@@ -1,17 +1,27 @@
 import styled from 'styled-components'
-import { Card, Botao, Notas } from '../cards/styles'
-import { Cores } from '../../styles'
+import { Card, Botao, Notas, SobrePrato, Serve } from '../cards/styles'
+import { Cores, tamanhosTela } from '../../styles'
 
 export const Ul = styled.ul`
   max-width: 1024px;
+  width: 100%;
   margin: 0 auto;
   padding-top: 56px;
   justify-content: center;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: 32px;
-  row-gap: 32px;
+  gap: 32px;
   list-style: none;
+
+  @media (max-width: ${tamanhosTela.tablet}) {
+    max-width: 80%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: ${tamanhosTela.celular}) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 export const Li = styled.li`
@@ -31,6 +41,11 @@ export const Li = styled.li`
     color: ${Cores.principal};
     margin: 8px;
     width: 304px;
+
+    @media (max-width: ${tamanhosTela.tablet}) {
+      width: 93%;
+      margin: 8px;
+    }
   }
 
   ${Notas} {
@@ -73,36 +88,104 @@ export const ConteudoPopup = styled.div`
     display: grid;
     grid-template-columns: 1fr 2fr;
     z-index: 1;
+
+    .teste {
+      position: relative;
+
+      @media (max-width: ${tamanhosTela.celular}) {
+        height: 265px;
+      }
+    }
+
+    @media (max-width: ${tamanhosTela.tablet}) {
+      width: 80%;
+      height: 45%;
+    }
+    @media (max-width: ${tamanhosTela.celular}) {
+      display: inline;
+      height: 450px;
+      position: relative;
+    }
+  }
+
+  ${Notas} {
+    margin: 32px 0 16px 0;
+
+    @media (max-width: ${tamanhosTela.tablet}) {
+      margin: 16px 0 16px 0;
+    }
+
+    @media (max-width: ${tamanhosTela.celular}) {
+      margin: 0 0 16px 16px;
+    }
   }
 
   img {
     max-width: 280px;
-    height: 280px;
+    height: 100%;
+    max-height: 280px;
     margin: 32px 0 32px 32px;
+    object-fit: cover;
 
     &:last-child {
       height: 16px;
       position: absolute;
-      top: -32px;
+      top: 0;
       right: 0;
       margin: 8px;
       cursor: pointer;
+
+      @media (max-width: ${tamanhosTela.tablet}) {
+        height: 16px;
+        top: 0px;
+        cursor: pointer;
+      }
+
+      @media (max-width: ${tamanhosTela.celular}) {
+        width: 16px;
+        height: 16px;
+        bottom: 0;
+        top: 0;
+        cursor: pointer;
+      }
+    }
+
+    @media (max-width: ${tamanhosTela.tablet}) {
+      max-width: 85%;
+      height: 85%;
+      margin: 16px 0 16px 16px;
+    }
+
+    @media (max-width: ${tamanhosTela.celular}) {
+      max-width: 100%;
+      height: 40%;
+      margin: 0;
+      padding: 16px;
     }
   }
 
   div {
-    position: relative;
+    @media (max-width: ${tamanhosTela.celular}) {
+      position: initial;
+    }
   }
 
-  h3 {
-    margin: 32px 0 16px 0;
+  ${Serve} {
+    @media (max-width: ${tamanhosTela.celular}) {
+      margin-left: 16px;
+    }
   }
 
-  p {
+  ${SobrePrato} {
     max-width: 656px;
     margin: 0 32px 0 0;
     font-weight: 400;
     color: ${Cores.branca};
+    -webkit-box-orient: inherit;
+
+    @media (max-width: ${tamanhosTela.celular}) {
+      padding-left: 16px;
+    }
   }
 
   a {
@@ -110,10 +193,17 @@ export const ConteudoPopup = styled.div`
       background-color: ${Cores.amarela};
       color: ${Cores.principal};
       padding: 4px 7px 4px 7px;
-      margin: 0 0 59px 0;
       position: absolute;
       bottom: 0;
-      left: 0;
+      margin: 0 0 59px 0;
+
+      @media (max-width: ${tamanhosTela.tablet}) {
+        margin: 0 0 20px 0;
+      }
+
+      @media (max-width: ${tamanhosTela.celular}) {
+        margin: 0 0 16px 16px;
+      }
     }
   }
 `

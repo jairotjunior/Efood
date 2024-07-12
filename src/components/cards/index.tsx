@@ -45,7 +45,7 @@ const Cards = ({
 }: Props) => (
   <Card>
     <ImageCards src={img} alt={decricaoImg} />
-    <div>
+    <div className="teste">
       {!!tags && (
         <Infos>
           {tags?.map((tag: string) => <Tag key={tag} destaque={tag} />)}
@@ -55,7 +55,10 @@ const Cards = ({
         {titulo}
         <div>
           {notas}
-          <img onClick={() => botaoFechar} src={imgIcon} />
+          <img
+            onClick={() => botaoFechar && botaoFechar(produto)}
+            src={imgIcon}
+          />
         </div>
       </Notas>
       <SobrePrato>{descricao}</SobrePrato>

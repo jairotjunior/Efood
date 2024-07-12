@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { TagContainer } from '../tag/styles'
-import { Cores } from '../../styles'
+import { Cores, tamanhosTela } from '../../styles'
 
 export const Card = styled.div`
   max-width: 472px;
@@ -21,6 +21,15 @@ export const ImageCards = styled.img`
   width: 100%;
   max-width: 480px;
   max-height: 280px;
+
+  @media (max-width: ${tamanhosTela.tablet}) {
+    height: 160px;
+    object-fit: cover;
+  }
+
+  @media (max-width: ${tamanhosTela.celular}) {
+    max-height: 280px;
+  }
 `
 export const Infos = styled.div`
   position: absolute;
@@ -43,6 +52,10 @@ export const Notas = styled.h3`
     margin-left: 9px;
     vertical-align: bottom;
   }
+
+  @media (max-width: ${tamanhosTela.tablet}) {
+    font-size: 80%;
+  }
 `
 
 export const SobrePrato = styled.p`
@@ -55,6 +68,10 @@ export const SobrePrato = styled.p`
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   text-align: justify;
+
+  @media (max-width: ${tamanhosTela.tablet}) {
+    font-size: 70%;
+  }
 `
 
 export const Botao = styled.button`
@@ -65,4 +82,9 @@ export const Botao = styled.button`
   padding: 4px 6px;
   cursor: pointer;
   font-weight: 700;
+
+  @media (max-width: ${tamanhosTela.tablet}) {
+    font-size: 70%;
+    margin-top: 3%;
+  }
 `

@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import garconReducer from './reducers/garcon'
+import garconReducer from './reducers/sacola'
 
 import api from '../services/api'
 
