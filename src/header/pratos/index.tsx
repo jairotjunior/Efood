@@ -32,7 +32,7 @@ const HeaderPratos = () => {
     <>
       <HeaderHero>
         <div>
-          <h5>Restaurantes</h5>
+          <Link to="/">Restaurantes</Link>
           <Link to="/">
             <img src={logo} alt="efood" />
           </Link>

@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { RootReducer } from '../../store'
 import { close, remove } from '../../store/reducers/sacola'
+import { formataPreco } from '../cards_pratos/index'
 
 import {
   Overlay,
@@ -20,11 +21,6 @@ const Carrinho = () => {
 
   const closeSacola = () => {
     dispatch(close())
-  }
-
-  const formataPreco = (precos: number) => {
-    precos.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
-    return precos
   }
 
   const somaTotal = () => {

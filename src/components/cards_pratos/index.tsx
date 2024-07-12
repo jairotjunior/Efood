@@ -10,6 +10,13 @@ import { Ul, Li, ConteudoPopup } from './styles'
 
 import Fechar from '../../assets/Fechar.png'
 
+export const formataPreco = (preco: number) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
+}
+
 const ListaPratos = () => {
   const dispatch = useDispatch()
   const [visivel, setVisivel] = useState(false)
@@ -70,7 +77,7 @@ const ListaPratos = () => {
             descricao={detalhePratos.descricao}
             serve={`Serve: ${detalhePratos.porcao}`}
             decricaoImg=""
-            botao={`Adicionar ao carrinho - R$ ${detalhePratos.preco}`}
+            botao={`Adicionar ao carrinho - ${formataPreco(detalhePratos.preco)}`}
             link=""
             imgIcon={Fechar}
             botaoFechar={toggleVisivel}

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Cores, tamanhosTela } from '../../styles'
+import { Link } from 'react-router-dom'
 
 export const HeaderHero = styled.div`
   background-color: ${Cores.amarela};
@@ -24,10 +25,13 @@ export const HeaderHero = styled.div`
   }
 
   h5,
-  .carrinho {
+  .carrinho,
+  a {
     font-weight: 900;
     font-size: 18px;
     cursor: pointer;
+    text-decoration: none;
+    color: ${Cores.principal};
 
     @media (max-width: ${tamanhosTela.tablet}) {
       font-size: 100%;
@@ -40,6 +44,9 @@ export const HeaderHero = styled.div`
     }
   }
 `
+
+export const TituloLink = styled(Link)``
+
 export const Container = styled.div`
   position: relative;
 
