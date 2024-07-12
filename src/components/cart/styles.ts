@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 import { Cores } from '../../styles'
+import { tamanhosTela } from '../../styles'
+
 import Lixeira from '../../assets/lixeira-de-reciclagem 1.png'
 
 export const CarrinhoConteudo = styled.div`
@@ -44,6 +46,9 @@ export const Li = styled.li`
   margin-bottom: 16px;
 
   img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
   }
 
   button {
@@ -55,6 +60,7 @@ export const Li = styled.li`
     position: absolute;
     bottom: 8px;
     right: 8px;
+    cursor: pointer;
   }
 `
 

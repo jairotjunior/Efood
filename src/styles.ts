@@ -7,6 +7,12 @@ export const Cores = {
   fundo: '#FFF8F2'
 }
 
+export const tamanhosTela = {
+  computador: '',
+  tablet: '1025px',
+  celular: '768px'
+}
+
 export const GlobalCss = createGlobalStyle`
   *{
     margin: 0;

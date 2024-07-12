@@ -1,11 +1,11 @@
+import HeaderPratos from '../../home/pratos'
 import ListaPratos from '../../components/cards_pratos/index'
-import HeaderPratos from '../../header/pratos'
 
-const Pratos = () => (
+const PagesPratos = () => (
   <>
     <HeaderPratos />
     <ListaPratos />
   </>
 )
 
-export default Pratos
+export default PagesPratos

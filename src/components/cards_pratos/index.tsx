@@ -3,18 +3,14 @@ import { useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 import Cards from '../cards/index'
-import { DadosRestaurante, Cardapio, pratosApi } from '../../api'
-import { add } from '../../store/reducers/garcon'
+import { DadosRestaurante, Cardapio } from '../../api'
+import { add, open } from '../../store/reducers/sacola'
 
 import { Ul, Li, ConteudoPopup } from './styles'
 
 import Fechar from '../../assets/Fechar.png'
 
-type Props = {
-  pratos: pratosApi
-}
-
-const ListaPratos = ({ pratos }: Props) => {
+const ListaPratos = () => {
   const dispatch = useDispatch()
   const [visivel, setVisivel] = useState(false)
   const parametrosRestaurante = useParams()
@@ -39,7 +35,10 @@ const ListaPratos = ({ pratos }: Props) => {
 
   const addCarrinho = () => {
     setVisivel(!visivel)
-    dispatch(add(pratos))
+    if (detalhePratos) {
+      dispatch(add(detalhePratos))
+      dispatch(open())
+    }
   }
 
   return (

@@ -2,7 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 import { DadosRestaurante } from '../../api'
-import { open } from '../../store/reducers/garcon'
+import { open } from '../../store/reducers/sacola'
 
 import { HeaderHero, ImgRestaurantes, Container, Paragrafo } from './styles'
 
@@ -36,15 +36,19 @@ const HeaderPratos = () => {
           <Link to="/">
             <img src={logo} alt="efood" />
           </Link>
-          <a onClick={openSacola}>{items.length} produto(s) no carrinho</a>
+          <a className="carrinho" onClick={openSacola}>
+            {items.length} produto(s) no carrinho
+          </a>
         </div>
       </HeaderHero>
       <Container>
         <ImgRestaurantes src={utilizandoDadosRestaurante.capa} alt="" />
         <div className="overlay">
           <Paragrafo>
-            <p className="teste">{utilizandoDadosRestaurante.tipo}</p>
-            <p className="teste1">{utilizandoDadosRestaurante.titulo}</p>
+            <p className="tipoRestaurante">{utilizandoDadosRestaurante.tipo}</p>
+            <p className="nomeRestaurante">
+              {utilizandoDadosRestaurante.titulo}
+            </p>
           </Paragrafo>
         </div>
       </Container>

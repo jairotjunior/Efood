@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Cores } from '../../styles'
+import { Cores, tamanhosTela } from '../../styles'
 
 export const HeaderHero = styled.div`
   background-color: ${Cores.amarela};
@@ -12,13 +12,30 @@ export const HeaderHero = styled.div`
     padding: 82px 0;
     color: ${Cores.principal};
     max-width: 1035px;
+
+    @media (max-width: ${tamanhosTela.tablet}) {
+      max-width: 80%;
+    }
+    @media (max-width: ${tamanhosTela.celular}) {
+      flex-direction: column;
+    }
   }
 
   h5,
-  a {
+  .carrinho {
     font-weight: 900;
     font-size: 18px;
     cursor: pointer;
+
+    @media (max-width: ${tamanhosTela.tablet}) {
+      font-size: 100%;
+    }
+    @media (max-width: ${tamanhosTela.celular}) {
+      width: 100%;
+      order: 2;
+      margin: 5%;
+      text-align: center;
+    }
   }
 `
 export const Container = styled.div`
@@ -49,15 +66,24 @@ export const Paragrafo = styled.div`
   font-size: 32px;
   max-width: 1035px;
   width: 100%;
-  display: inline;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 100%;
   margin: 0 auto;
 
-  .teste {
+  .tipoRestaurante {
     font-weight: 100;
     padding-top: 25px;
   }
-  .teste1 {
+  .nomeRestaurante {
     font-weight: 700;
-    padding: 156px 0 32px 0;
+    padding-bottom: 32px;
+  }
+
+  @media (max-width: ${tamanhosTela.tablet}) {
+    max-width: 80%;
+    font-size: 150%;
   }
 `

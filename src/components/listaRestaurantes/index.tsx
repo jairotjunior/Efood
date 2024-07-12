@@ -5,7 +5,7 @@ import { DadosApi } from '../../api'
 
 import Estrela from '../../assets/star.png'
 
-const ListaCardapio = () => {
+const ListaRestaurante = () => {
   const restaurante = DadosApi()
 
   return (
@@ -33,4 +33,4 @@ const ListaCardapio = () => {
   )
 }
 
-export default ListaCardapio
+export default ListaRestaurante

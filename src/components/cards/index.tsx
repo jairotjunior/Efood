@@ -55,7 +55,10 @@ const Cards = ({
         {titulo}
         <div>
           {notas}
-          <img onClick={() => botaoFechar} src={imgIcon} />
+          <img
+            onClick={() => botaoFechar && botaoFechar(produto)}
+            src={imgIcon}
+          />
         </div>
       </Notas>
       <SobrePrato>{descricao}</SobrePrato>
