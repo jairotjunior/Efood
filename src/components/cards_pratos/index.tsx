@@ -10,11 +10,7 @@ import { Ul, Li, ConteudoPopup } from './styles'
 
 import Fechar from '../../assets/Fechar.png'
 
-type Props = {
-  pratos: pratosApi
-}
-
-const ListaPratos = ({ pratos }: Props) => {
+const ListaPratos = () => {
   const dispatch = useDispatch()
   const [visivel, setVisivel] = useState(false)
   const parametrosRestaurante = useParams()
