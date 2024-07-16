@@ -34,7 +34,7 @@ export const Overlay = styled.div`
 export const Sidebar = styled.aside`
   background-color: ${Cores.principal};
   z-index: 1;
-  width: 30%;
+  width: 360px;
   padding: 32px 8px;
 
   @media (max-width: ${tamanhosTela.tablet}) {
