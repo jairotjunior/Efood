@@ -45,7 +45,7 @@ const Cards = ({
 }: Props) => (
   <Card>
     <ImageCards src={img} alt={decricaoImg} />
-    <div className="teste">
+    <div className="cardContainer">
       {!!tags && (
         <Infos>
           {tags?.map((tag: string) => <Tag key={tag} destaque={tag} />)}

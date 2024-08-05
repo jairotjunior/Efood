@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
-import { Cores } from '../../styles'
-import { tamanhosTela } from '../../styles'
+import { Cores, tamanhosTela } from '../../styles'
 
 import Lixeira from '../../assets/lixeira-de-reciclagem 1.png'
 

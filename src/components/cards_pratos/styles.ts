@@ -89,7 +89,7 @@ export const ConteudoPopup = styled.div`
     grid-template-columns: 1fr 2fr;
     z-index: 1;
 
-    .teste {
+    .cardContainer {
       position: relative;
 
       @media (max-width: ${tamanhosTela.celular}) {
