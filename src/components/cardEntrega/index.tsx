@@ -61,8 +61,8 @@ export const EnderecoEntrega = () => {
         .required('O campo é obrigatório'),
       complemento: Yup.string().min(5, 'Digite caso tenha complemento')
     }),
-    onSubmit: (values) => {
-      dadosForm(values)
+    onSubmit: () => {
+      console.log('teste')
     }
   })
 
