@@ -1,12 +1,37 @@
-import { useFormik } from 'formik'
+import { useFormik, useFormikContext } from 'formik'
 import * as Yup from 'yup'
+import { useDispatch, useSelector } from 'react-redux'
+
+// import { usePurchaseMutation } from '../../services/api'
+import { avancaEtapa, retornaEtapa, open } from '../../store/reducers/sacola'
+import { RootReducer } from '../../store'
 
 import { Overlay } from '../cart/styles'
 import * as S from './styles'
-import { usePurchaseMutation } from '../../services/api'
+import { useState } from 'react'
 
 export const EnderecoEntrega = () => {
-  const [purchase, { isError, isLoading }] = usePurchaseMutation()
+  // const [purchase] = usePurchaseMutation()
+  // const formContext = useFormikContext()
+
+  // console.log('formContext', formContext)
+
+  const [dadosForm] = useState()
+
+  const dispatch = useDispatch()
+
+  const { etapa } = useSelector((state: RootReducer) => state.garcon)
+
+  const avancaPagamento = () => {
+    dispatch(avancaEtapa())
+  }
+
+  const retornaCarrinho = () => {
+    dispatch(retornaEtapa())
+    dispatch(open())
+  }
+
+  console.log(dadosForm)
 
   const form = useFormik({
     initialValues: {
@@ -37,38 +62,21 @@ export const EnderecoEntrega = () => {
       complemento: Yup.string().min(5, 'Digite caso tenha complemento')
     }),
     onSubmit: (values) => {
-      purchase({
-        delivery: {
-          receiver: values.nome,
-          address: {
-            description: values.endereco,
-            city: values.cidade,
-            zipCode: values.cep,
-            number: Number(values.numero),
-            complement: values.complemento
-          }
-        },
-        products: [
-          {
-            id: 1,
-            price: 10
-          }
-        ]
-      })
+      dadosForm(values)
     }
   })
 
   const validandoCampos = (fieldName: string, message?: string) => {
-    const campopreenchido = fieldName in form.touched
+    const campoPreenchido = fieldName in form.touched
     const campoErro = fieldName in form.errors
 
-    if (campopreenchido && campoErro) return message
+    if (campoPreenchido && campoErro) return message
     return ''
   }
 
   return (
     <form onSubmit={form.handleSubmit}>
-      <S.ConteudoCardEntrega>
+      <S.ConteudoCardEntrega className={etapa === 1 ? 'abrir_entrega' : ''}>
         <Overlay />
         <S.FormEnderecoEntrega>
           <h3>Entrega</h3>
@@ -149,8 +157,8 @@ export const EnderecoEntrega = () => {
             </small>
           </S.CamposForm>
           <S.Botoes>
-            <button>Continuar com o pagamento</button>
-            <button>Voltar para o carrinho</button>
+            <button onClick={avancaPagamento}>Continuar com o pagamento</button>
+            <button onClick={retornaCarrinho}>Voltar para o carrinho</button>
           </S.Botoes>
         </S.FormEnderecoEntrega>
       </S.ConteudoCardEntrega>

@@ -4,11 +4,13 @@ import { Cardapio } from '../../api'
 type sacolaState = {
   items: Cardapio[]
   isOpen: boolean
+  etapa: number
 }
 
 const initialState: sacolaState = {
   items: [],
-  isOpen: false
+  isOpen: false,
+  etapa: 0
 }
 
 const sacolaSlice = createSlice({
@@ -33,9 +35,26 @@ const sacolaSlice = createSlice({
     },
     close: (state) => {
       state.isOpen = false
+    },
+    avancaEtapa: (state) => {
+      state.etapa = state.etapa + 1
+    },
+    retornaEtapa: (state) => {
+      state.etapa = state.etapa - 1
+    },
+    zeraEtapa: (state) => {
+      state.etapa = 0
     }
   }
 })
 
-export const { add, open, close, remove } = sacolaSlice.actions
+export const {
+  add,
+  open,
+  close,
+  remove,
+  avancaEtapa,
+  retornaEtapa,
+  zeraEtapa
+} = sacolaSlice.actions
 export default sacolaSlice.reducer

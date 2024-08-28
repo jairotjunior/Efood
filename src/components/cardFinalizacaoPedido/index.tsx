@@ -1,19 +1,29 @@
+import { useDispatch, useSelector } from 'react-redux'
+
+import { zeraEtapa } from '../../store/reducers/sacola'
+import { RootReducer } from '../../store'
+
 import { Overlay } from '../cart/styles'
 
-import {
-  ConteudoFinalizacaoPedido,
-  FormFinalizacaoPedido,
-  Botao,
-  MensagemFinalizacao
-} from './styles'
+import * as S from './styles'
 
 export const FinalizacaoPedido = () => {
+  const dispatch = useDispatch()
+
+  const { etapa } = useSelector((state: RootReducer) => state.garcon)
+
+  const concluir = () => {
+    dispatch(zeraEtapa())
+  }
+
   return (
-    <ConteudoFinalizacaoPedido>
+    <S.ConteudoFinalizacaoPedido
+      className={etapa === 3 ? 'abrir_finalizacaoPedido' : ''}
+    >
       <Overlay />
-      <FormFinalizacaoPedido>
+      <S.FormFinalizacaoPedido>
         <h3>Pedido realizado - ORDER_ID</h3>
-        <MensagemFinalizacao>
+        <S.MensagemFinalizacao>
           Estamos felizes em informar que seu pedido já está em processo de
           preparação e, em breve, será entregue no endereço fornecido.
           <br /> <br />
@@ -24,9 +34,9 @@ export const FinalizacaoPedido = () => {
           <br /> <br />
           Esperamos que desfrute de uma deliciosa e agradável experiência
           gastronômica. Bom apetite!
-        </MensagemFinalizacao>
-        <Botao>Concluir</Botao>
-      </FormFinalizacaoPedido>
-    </ConteudoFinalizacaoPedido>
+        </S.MensagemFinalizacao>
+        <S.Botao onClick={concluir}>Concluir</S.Botao>
+      </S.FormFinalizacaoPedido>
+    </S.ConteudoFinalizacaoPedido>
   )
 }

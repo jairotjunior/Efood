@@ -1,18 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootReducer } from '../../store'
-import { close, remove } from '../../store/reducers/sacola'
+import { close, remove, avancaEtapa } from '../../store/reducers/sacola'
 import { formataPreco } from '../cards_pratos/index'
 
-import {
-  Overlay,
-  CarrinhoConteudo,
-  Sidebar,
-  Li,
-  ConteudoLi,
-  ValorTotal,
-  Botao
-} from './styles'
+import * as S from './styles'
 
 const Carrinho = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.garcon)
@@ -21,6 +13,11 @@ const Carrinho = () => {
 
   const closeSacola = () => {
     dispatch(close())
+  }
+
+  const avancaEnderecoEntrega = () => {
+    dispatch(close())
+    dispatch(avancaEtapa())
   }
 
   const somaTotal = () => {
@@ -34,27 +31,29 @@ const Carrinho = () => {
   }
 
   return (
-    <CarrinhoConteudo className={isOpen ? 'is-open' : ''}>
-      <Overlay onClick={closeSacola} />
-      <Sidebar>
+    <S.CarrinhoConteudo className={isOpen ? 'is-open' : ''}>
+      <S.Overlay onClick={closeSacola} />
+      <S.Sidebar>
         <ul>
           {items.map((item) => (
-            <Li key={item.id}>
+            <S.Li key={item.id}>
               <img src={item.foto} alt="" />
-              <ConteudoLi>
+              <S.ConteudoLi>
                 <h3>{item.nome}</h3>
                 <p>{formataPreco(item.preco)}</p>
-              </ConteudoLi>
+              </S.ConteudoLi>
               <button onClick={() => removerItem(item.id)} type="button" />
-            </Li>
+            </S.Li>
           ))}
         </ul>
-        <ValorTotal>
+        <S.ValorTotal>
           Valor Total <span>{formataPreco(somaTotal())}</span>
-        </ValorTotal>
-        <Botao>Continuar com a entrega</Botao>
-      </Sidebar>
-    </CarrinhoConteudo>
+        </S.ValorTotal>
+        <S.Botao onClick={avancaEnderecoEntrega}>
+          Continuar com a entrega
+        </S.Botao>
+      </S.Sidebar>
+    </S.CarrinhoConteudo>
   )
 }
 

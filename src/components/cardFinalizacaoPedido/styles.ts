@@ -13,7 +13,7 @@ export const ConteudoFinalizacaoPedido = styled.div`
   z-index: 1;
   color: ${Cores.amarela};
 
-  .abrir_pagamento {
+  &.abrir_finalizacaoPedido {
     display: flex;
   }
 `

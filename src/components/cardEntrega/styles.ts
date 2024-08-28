@@ -8,13 +8,13 @@ export const ConteudoCardEntrega = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
+  display: none;
   justify-content: flex-end;
   z-index: 1;
   color: ${Cores.amarela};
 
-  .abrir_entrega {
-    display: flex:
+  &.abrir_entrega {
+    display: flex;
   }
 `
 export const FormEnderecoEntrega = styled.div`
