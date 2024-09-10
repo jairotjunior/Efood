@@ -8,8 +8,6 @@ import Carrinho from './components/cart'
 import Rotas from './routes'
 import { store } from './store'
 import { EnderecoEntrega } from './components/cardEntrega'
-import { Pagamento } from './components/cardPagamento'
-import { FinalizacaoPedido } from './components/cardFinalizacaoPedido'
 
 function App() {
   return (
@@ -22,8 +20,6 @@ function App() {
         </div>
         <Carrinho />
         <EnderecoEntrega />
-        <Pagamento />
-        <FinalizacaoPedido />
       </BrowserRouter>
     </Provider>
   )

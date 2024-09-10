@@ -1,4 +1,4 @@
-import { useFormik, useFormikContext } from 'formik'
+import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -10,9 +10,6 @@ import { Overlay } from '../cart/styles'
 import * as S from './styles'
 
 export const Pagamento = () => {
-  // const formContext = useFormikContext()
-  // console.log('formContext', formContext)
-
   const [purchase] = usePurchaseMutation()
 
   const { etapa } = useSelector((state: RootReducer) => state.garcon)
@@ -58,7 +55,7 @@ export const Pagamento = () => {
     onSubmit: (values) => {
       purchase({
         // delivery: {
-        //   receiver: values.nome,
+        //   receiver: dados.form.nome,
         //   address: {
         //     description: values.endereco,
         //     city: values.cidade,
