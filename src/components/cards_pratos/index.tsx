@@ -6,7 +6,7 @@ import Cards from '../cards/index'
 import { DadosRestaurante, Cardapio } from '../../api'
 import { add, open } from '../../store/reducers/sacola'
 
-import { Ul, Li, ConteudoPopup } from './styles'
+import * as S from './styles'
 
 import Fechar from '../../assets/Fechar.png'
 
@@ -51,9 +51,9 @@ const ListaPratos = () => {
   return (
     <>
       <section className="fundo">
-        <Ul>
+        <S.Ul>
           {requisicao.cardapio.map((prato) => (
-            <Li key={prato.id}>
+            <S.Li key={prato.id}>
               <Cards
                 produto={prato}
                 img={prato.foto}
@@ -64,11 +64,11 @@ const ListaPratos = () => {
                 link=""
                 toggleButton={toggleVisivel}
               />
-            </Li>
+            </S.Li>
           ))}
-        </Ul>
+        </S.Ul>
       </section>
-      <ConteudoPopup className={visivel ? 'visivel' : ''}>
+      <S.ConteudoPopup className={visivel ? 'visivel' : ''}>
         {detalhePratos && (
           <Cards
             key={detalhePratos.id}
@@ -85,7 +85,7 @@ const ListaPratos = () => {
           />
         )}
         <div onClick={() => toggleVisivel} className="overlay" />
-      </ConteudoPopup>
+      </S.ConteudoPopup>
     </>
   )
 }

@@ -1,7 +1,7 @@
 import Cards from '../cards'
-import { Lista } from './styles'
-
 import { DadosApi } from '../../api'
+
+import { Lista } from './styles'
 
 import Estrela from '../../assets/star.png'
 

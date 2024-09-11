@@ -1,15 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import Tag from '../tag/index'
-import {
-  Card,
-  Botao,
-  Notas,
-  SobrePrato,
-  Infos,
-  ImageCards,
-  Serve
-} from './styles'
+import * as S from './styles'
 import { Cardapio } from '../../api'
 
 type Props = {
@@ -43,15 +35,15 @@ const Cards = ({
   toggleButton,
   botaoFechar
 }: Props) => (
-  <Card>
-    <ImageCards src={img} alt={decricaoImg} />
+  <S.Card>
+    <S.ImageCards src={img} alt={decricaoImg} />
     <div className="cardContainer">
       {!!tags && (
-        <Infos>
+        <S.Infos>
           {tags?.map((tag: string) => <Tag key={tag} destaque={tag} />)}
-        </Infos>
+        </S.Infos>
       )}
-      <Notas>
+      <S.Notas>
         {titulo}
         <div>
           {notas}
@@ -60,16 +52,16 @@ const Cards = ({
             src={imgIcon}
           />
         </div>
-      </Notas>
-      <SobrePrato>{descricao}</SobrePrato>
-      {!!serve && <Serve>{serve}</Serve>}
+      </S.Notas>
+      <S.SobrePrato>{descricao}</S.SobrePrato>
+      {!!serve && <S.Serve>{serve}</S.Serve>}
       <Link to={link}>
-        <Botao onClick={() => toggleButton && toggleButton(produto)}>
+        <S.Botao onClick={() => toggleButton && toggleButton(produto)}>
           {botao}
-        </Botao>
+        </S.Botao>
       </Link>
     </div>
-  </Card>
+  </S.Card>
 )
 
 export default Cards

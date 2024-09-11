@@ -1,14 +1,13 @@
 import { Link, useParams } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
 
 import { DadosRestaurante } from '../../api'
 import { open } from '../../store/reducers/sacola'
 
-import { HeaderHero, ImgRestaurantes, Container, Paragrafo } from './styles'
+import * as S from './styles'
 
 import logo from '../../assets/logo.png'
-import { useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
 
 const HeaderPratos = () => {
   const dispatch = useDispatch()
@@ -30,7 +29,7 @@ const HeaderPratos = () => {
 
   return (
     <>
-      <HeaderHero>
+      <S.HeaderHero>
         <div>
           <Link to="/">Restaurantes</Link>
           <Link to="/">
@@ -40,18 +39,18 @@ const HeaderPratos = () => {
             {items.length} produto(s) no carrinho
           </a>
         </div>
-      </HeaderHero>
-      <Container>
-        <ImgRestaurantes src={utilizandoDadosRestaurante.capa} alt="" />
+      </S.HeaderHero>
+      <S.Container>
+        <S.ImgRestaurantes src={utilizandoDadosRestaurante.capa} alt="" />
         <div className="overlay">
-          <Paragrafo>
+          <S.Paragrafo>
             <p className="tipoRestaurante">{utilizandoDadosRestaurante.tipo}</p>
             <p className="nomeRestaurante">
               {utilizandoDadosRestaurante.titulo}
             </p>
-          </Paragrafo>
+          </S.Paragrafo>
         </div>
-      </Container>
+      </S.Container>
     </>
   )
 }
