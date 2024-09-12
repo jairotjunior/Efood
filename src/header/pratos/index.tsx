@@ -35,7 +35,7 @@ const HeaderPratos = () => {
           <Link to="/">
             <img src={logo} alt="efood" />
           </Link>
-          <a className="carrinho" onClick={openSacola}>
+          <a role="button" className="carrinho" onClick={openSacola}>
             {items.length} produto(s) no carrinho
           </a>
         </div>

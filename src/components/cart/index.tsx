@@ -36,24 +36,30 @@ const Carrinho = () => {
     <S.CarrinhoConteudo className={isOpen ? 'is-open' : ''}>
       <S.Overlay onClick={closeSacola} />
       <S.Sidebar>
-        <ul>
-          {items.map((item) => (
-            <S.Li key={item.id}>
-              <img src={item.foto} alt="" />
-              <S.ConteudoLi>
-                <h3>{item.nome}</h3>
-                <p>{formataPreco(item.preco)}</p>
-              </S.ConteudoLi>
-              <button onClick={() => removerItem(item.id)} type="button" />
-            </S.Li>
-          ))}
-        </ul>
-        <S.ValorTotal>
-          Valor Total <span>{formataPreco(somaTotal(items))}</span>
-        </S.ValorTotal>
-        <S.Botao onClick={avancaEnderecoEntrega}>
-          Continuar com a entrega
-        </S.Botao>
+        {items.length > 0 ? (
+          <>
+            <ul>
+              {items.map((item) => (
+                <S.Li key={item.id}>
+                  <img src={item.foto} alt="" />
+                  <S.ConteudoLi>
+                    <h3>{item.nome}</h3>
+                    <p>{formataPreco(item.preco)}</p>
+                  </S.ConteudoLi>
+                  <button onClick={() => removerItem(item.id)} type="button" />
+                </S.Li>
+              ))}
+            </ul>
+            <S.ValorTotal>
+              Valor Total <span>{formataPreco(somaTotal(items))}</span>
+            </S.ValorTotal>
+            <S.Botao onClick={avancaEnderecoEntrega}>
+              Continuar com a entrega
+            </S.Botao>
+          </>
+        ) : (
+          <p className="carrinho-vazio">Não foi adicionado nenhum prato</p>
+        )}
       </S.Sidebar>
     </S.CarrinhoConteudo>
   )

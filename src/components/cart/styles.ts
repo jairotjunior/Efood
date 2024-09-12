@@ -36,6 +36,13 @@ export const Sidebar = styled.aside`
   width: 360px;
   padding: 32px 8px;
 
+  .carrinho-vazio {
+    color: ${Cores.branca};
+    font-size: 14px;
+    text-align: center;
+    line-height: 22px;
+  }
+
   @media (max-width: ${tamanhosTela.tablet}) {
     width: 40%;
   }

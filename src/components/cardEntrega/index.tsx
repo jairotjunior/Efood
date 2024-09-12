@@ -1,6 +1,7 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
+import InputMask from 'react-input-mask'
 
 import { usePurchaseMutation } from '../../services/api'
 import {
@@ -67,8 +68,7 @@ export const EnderecoEntrega = () => {
         .min(5, 'Digite a cidade')
         .required('O campo é obrigatório'),
       cep: Yup.string()
-        .min(8, 'CEP inválido, faltando números')
-        .max(8, 'CEP inválido, números maiores que o padrão do país')
+        .min(9, 'CEP inválido, faltando números')
         .required('O campo é obrigatório'),
       numero: Yup.number()
         .min(0, 'Digite o número')
@@ -79,19 +79,15 @@ export const EnderecoEntrega = () => {
         .required('O campo é obrigatório para a realização do pagamento'),
       numCartao: Yup.string()
         .min(16, 'Número inserido incorreto, verifique seu cartão')
-        .max(16, 'Número inserido incorreto, verifique seu cartão')
         .required('O campo é obrigatório para a realização do pagamento'),
       cvv: Yup.string()
         .min(3, 'Digite os número que consta no verso do cartão')
-        .max(3, 'Digite os número que consta no verso do cartão')
         .required('O campo é obrigatório para a realização do pagamento'),
       mesVencimento: Yup.string()
         .min(2, 'Digite o vencimento impresso no cartão')
-        .max(2, 'Digite o vencimento impresso no cartão')
         .required('O campo é obrigatório para a realização do pagamento'),
       anoVencimento: Yup.string()
         .min(4, 'Digite o ano de vencimento impresso no cartão')
-        .max(4, 'Digite o ano de vencimento impresso no cartão')
         .required('O campo é obrigatório para a realização do pagamento')
     }),
     onSubmit: (values) => {
@@ -109,7 +105,7 @@ export const EnderecoEntrega = () => {
         payment: {
           card: {
             name: values.nomeCartao,
-            number: Number(values.numCartao),
+            number: values.numCartao,
             code: Number(values.cvv),
             expires: {
               month: Number(values.mesVencimento),
@@ -117,12 +113,10 @@ export const EnderecoEntrega = () => {
             }
           }
         },
-        products: [
-          {
-            id: 1,
-            price: 10
-          }
-        ]
+        products: items.map((item) => ({
+          id: item.id,
+          price: item.preco
+        }))
       })
     }
   })
@@ -137,7 +131,7 @@ export const EnderecoEntrega = () => {
 
   return (
     <>
-      {isSuccess ? (
+      {isSuccess && data ? (
         <S.ConteudoFinalizacaoPedido
           className={etapa === 3 ? 'abrir_finalizacaoPedido' : ''}
         >
@@ -209,13 +203,14 @@ export const EnderecoEntrega = () => {
               <S.CamposCepNum>
                 <S.CamposForm>
                   <label htmlFor="cep">CEP</label>
-                  <input
+                  <InputMask
                     id="cep"
-                    type="number"
+                    type="text"
                     name="cep"
                     value={form.values.cep}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    mask="99999-999"
                   />
                   <small>{validandoCampos('cep', form.errors.cep)}</small>
                 </S.CamposForm>
@@ -236,7 +231,7 @@ export const EnderecoEntrega = () => {
                 <label htmlFor="complemento">Complemento (opcional)</label>
                 <input
                   id="complemento"
-                  type="number"
+                  type="text"
                   name="complemento"
                   value={form.values.complemento}
                   onChange={form.handleChange}
@@ -280,13 +275,14 @@ export const EnderecoEntrega = () => {
               <S.CamposFormCartao>
                 <S.CamposFormPagamento>
                   <label htmlFor="numCartao">Número do cartão</label>
-                  <input
+                  <InputMask
                     id="numCartao"
-                    type="number"
+                    type="text"
                     name="numCartao"
                     value={form.values.numCartao}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    mask="9999 9999 9999 9999"
                   />
                   <small>
                     {validandoCampos('numCartao', form.errors.numCartao)}
@@ -294,13 +290,14 @@ export const EnderecoEntrega = () => {
                 </S.CamposFormPagamento>
                 <S.CamposFormPagamento>
                   <label htmlFor="cvv">CVV</label>
-                  <input
+                  <InputMask
                     id="cvv"
-                    type="number"
+                    type="text"
                     name="cvv"
                     value={form.values.cvv}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    mask="999"
                   />
                   <small>{validandoCampos('cvv', form.errors.cvv)}</small>
                 </S.CamposFormPagamento>
@@ -308,13 +305,14 @@ export const EnderecoEntrega = () => {
               <S.CamposFormCartao>
                 <S.CamposFormPagamento>
                   <label htmlFor="mesVencimento">Mês de vencimento</label>
-                  <input
+                  <InputMask
                     id="mesVencimento"
-                    type="number"
+                    type="text"
                     name="mesVencimento"
                     value={form.values.mesVencimento}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    mask="99"
                   />
                   <small>
                     {validandoCampos(
@@ -325,13 +323,14 @@ export const EnderecoEntrega = () => {
                 </S.CamposFormPagamento>
                 <S.CamposFormPagamento>
                   <label htmlFor="anoVencimento">Ano de vencimento</label>
-                  <input
+                  <InputMask
                     id="anoVencimento"
-                    type="number"
+                    type="text"
                     name="anoVencimento"
                     value={form.values.anoVencimento}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    mask="9999"
                   />
                   <small>
                     {validandoCampos(
