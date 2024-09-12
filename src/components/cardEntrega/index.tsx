@@ -7,19 +7,21 @@ import {
   avancaEtapa,
   retornaEtapa,
   open,
-  zeraEtapa
+  zeraEtapa,
+  remove,
+  close
 } from '../../store/reducers/sacola'
 import { RootReducer } from '../../store'
+import { formataPreco, somaTotal } from '../../util'
 
 import { Overlay } from '../cart/styles'
 import * as S from './styles'
 
 export const EnderecoEntrega = () => {
   const [purchase, { isSuccess, data }] = usePurchaseMutation()
-
   const dispatch = useDispatch()
 
-  const { etapa } = useSelector((state: RootReducer) => state.garcon)
+  const { etapa, items } = useSelector((state: RootReducer) => state.garcon)
 
   const avancaPagamento = () => {
     dispatch(avancaEtapa())
@@ -34,8 +36,10 @@ export const EnderecoEntrega = () => {
     dispatch(retornaEtapa())
   }
 
-  const concluir = () => {
+  const concluir = (ids: number[]) => {
+    ids.forEach((id) => dispatch(remove(id)))
     dispatch(zeraEtapa())
+    dispatch(close())
   }
 
   const form = useFormik({
@@ -153,7 +157,9 @@ export const EnderecoEntrega = () => {
               Esperamos que desfrute de uma deliciosa e agradável experiência
               gastronômica. Bom apetite!
             </S.MensagemFinalizacao>
-            <S.Botao onClick={concluir}>Concluir</S.Botao>
+            <S.Botao onClick={() => concluir(items.map((item) => item.id))}>
+              Concluir
+            </S.Botao>
           </S.FormFinalizacaoPedido>
         </S.ConteudoFinalizacaoPedido>
       ) : (
@@ -241,10 +247,10 @@ export const EnderecoEntrega = () => {
                 </small>
               </S.CamposForm>
               <S.BotoesEntrega>
-                <button onClick={avancaPagamento}>
+                <button type="button" onClick={avancaPagamento}>
                   Continuar com o pagamento
                 </button>
-                <button onClick={retornaCarrinho}>
+                <button type="button" onClick={retornaCarrinho}>
                   Voltar para o carrinho
                 </button>
               </S.BotoesEntrega>
@@ -253,7 +259,10 @@ export const EnderecoEntrega = () => {
           <S.ConteudoPagamento className={etapa === 2 ? 'abrir_pagamento' : ''}>
             <Overlay />
             <S.FormPagamento>
-              <h3>Pagamento - Valor a pagar R$ 190,90</h3>
+              <h3>
+                Pagamento - Valor a pagar{' '}
+                <span>{formataPreco(somaTotal(items))}</span>
+              </h3>
               <S.CamposFormPagamento>
                 <label htmlFor="nomeCartao">Nome no cartão</label>
                 <input
@@ -333,8 +342,10 @@ export const EnderecoEntrega = () => {
                 </S.CamposFormPagamento>
               </S.CamposFormCartao>
               <S.BotoesPagamento>
-                <button onClick={avancaPagamento}>Finalizar pagamento</button>
-                <button onClick={retornaFormEntrega}>
+                <button type="submit" onClick={avancaPagamento}>
+                  Finalizar pagamento
+                </button>
+                <button type="button" onClick={retornaFormEntrega}>
                   Voltar para a edição de endereço
                 </button>
               </S.BotoesPagamento>

@@ -2,12 +2,14 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { RootReducer } from '../../store'
 import { close, remove, avancaEtapa } from '../../store/reducers/sacola'
-import { formataPreco } from '../cards_pratos/index'
+import { formataPreco, somaTotal } from '../../util'
 
 import * as S from './styles'
 
 const Carrinho = () => {
-  const { isOpen, items } = useSelector((state: RootReducer) => state.garcon)
+  const { isOpen, items, etapa } = useSelector(
+    (state: RootReducer) => state.garcon
+  )
 
   const dispatch = useDispatch()
 
@@ -16,14 +18,14 @@ const Carrinho = () => {
   }
 
   const avancaEnderecoEntrega = () => {
-    dispatch(close())
-    dispatch(avancaEtapa())
-  }
-
-  const somaTotal = () => {
-    return items.reduce((valores, ultimoValor) => {
-      return (valores += ultimoValor.preco)
-    }, 0)
+    if (items.length > 0) {
+      dispatch(close())
+      dispatch(avancaEtapa())
+      console.log(etapa)
+    } else {
+      dispatch(close())
+      return alert('Favor inserir algo ao carrinho')
+    }
   }
 
   const removerItem = (id: number) => {
@@ -47,7 +49,7 @@ const Carrinho = () => {
           ))}
         </ul>
         <S.ValorTotal>
-          Valor Total <span>{formataPreco(somaTotal())}</span>
+          Valor Total <span>{formataPreco(somaTotal(items))}</span>
         </S.ValorTotal>
         <S.Botao onClick={avancaEnderecoEntrega}>
           Continuar com a entrega

@@ -98,4 +98,5 @@ export const Botao = styled.button`
   font-weight: 700;
   border: none;
   background-color: ${Cores.amarela};
+  cursor: pointer;
 `

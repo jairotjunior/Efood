@@ -5,17 +5,11 @@ import { useDispatch } from 'react-redux'
 import Cards from '../cards/index'
 import { DadosRestaurante, Cardapio } from '../../api'
 import { add, open } from '../../store/reducers/sacola'
+import { formataPreco } from '../../util'
 
 import * as S from './styles'
 
 import Fechar from '../../assets/Fechar.png'
-
-export const formataPreco = (preco: number) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
-}
 
 const ListaPratos = () => {
   const dispatch = useDispatch()

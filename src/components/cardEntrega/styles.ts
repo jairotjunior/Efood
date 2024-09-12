@@ -67,6 +67,7 @@ export const BotoesEntrega = styled.div`
     font-size: 14px;
     background-color: ${Cores.amarela};
     border: none;
+    cursor: pointer;
   }
 `
 
@@ -141,6 +142,7 @@ export const BotoesPagamento = styled.div`
     font-size: 14px;
     background-color: ${Cores.amarela};
     border: none;
+    cursor: pointer;
   }
 `
 export const ConteudoFinalizacaoPedido = styled.div`
@@ -189,4 +191,5 @@ export const Botao = styled.div`
   background-color: ${Cores.amarela};
   border: none;
   text-align: center;
+  cursor: pointer;
 `
