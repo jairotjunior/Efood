@@ -54,24 +54,28 @@ export const EnderecoEntrega = () => {
   }
 
   const finalizaPedido = () => {
-    if (!form.touched.nomeCartao) {
+    if (form.values.nomeCartao.length <= 5) {
       setErro('Informe o nome que consta no cartão')
       return
     }
-    if (!form.touched.numCartao) {
+    if (form.values.numCartao.length <= 18) {
       setErro('Número do cartão é obrigatório')
+      console.log(form.values.numCartao.length)
       return
     }
-    if (!form.touched.cvv) {
+    if (form.values.cvv.length <= 2) {
       setErro('Informe os 3 número no verso do cartão')
+      console.log(form.values.numCartao.length)
       return
     }
-    if (!form.touched.mesVencimento) {
+    if (form.values.mesVencimento.length <= 1) {
       setErro('Insira o mês de vencimento')
+      console.log(form.values.numCartao.length)
       return
     }
-    if (!form.touched.anoVencimento) {
+    if (form.values.anoVencimento.length <= 3) {
       setErro('Insira o ano de vencimento')
+      console.log(form.values.numCartao.length)
       return
     }
     dispatch(avancaEtapa())
@@ -162,6 +166,8 @@ export const EnderecoEntrega = () => {
       })
     }
   })
+
+  console.log(form.values.mesVencimento.length)
 
   const validandoCampos = (fieldName: string, message?: string) => {
     const campoPreenchido = fieldName in form.touched
@@ -257,7 +263,7 @@ export const EnderecoEntrega = () => {
                   <label htmlFor="numero">Número</label>
                   <input
                     id="numero"
-                    type="number"
+                    type="text"
                     name="numero"
                     value={form.values.numero}
                     onChange={form.handleChange}
@@ -276,7 +282,7 @@ export const EnderecoEntrega = () => {
                   onBlur={form.handleBlur}
                 />
               </S.CamposForm>
-              <p>{erro ? <S.AvisoErro>{erro}</S.AvisoErro> : null}</p>
+              <S.CampoErro>{erro ? <small>{erro}</small> : null}</S.CampoErro>
               <S.BotoesEntrega>
                 <button type="button" onClick={avancaPagamento}>
                   Continuar com o pagamento
@@ -376,7 +382,7 @@ export const EnderecoEntrega = () => {
                   </small>
                 </S.CamposFormPagamento>
               </S.CamposFormCartao>
-              <p>{erro ? <S.AvisoErro>{erro}</S.AvisoErro> : null}</p>
+              <S.CampoErro>{erro ? <small>{erro}</small> : null}</S.CampoErro>
               <S.BotoesPagamento>
                 <button
                   type={erro === null ? 'submit' : 'button'}
