@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Card, Botao, Notas, SobrePrato, Serve } from '../cards/styles'
+import * as S from '../cards/styles'
 import { Cores, tamanhosTela } from '../../styles'
 
 export const Ul = styled.ul`
@@ -31,12 +31,12 @@ export const Li = styled.li`
     object-fit: cover;
   }
 
-  ${Card} {
+  ${S.Card} {
     background-color: ${Cores.principal};
     color: ${Cores.amarela};
   }
 
-  ${Botao} {
+  ${S.Botao} {
     background-color: ${Cores.amarela};
     color: ${Cores.principal};
     margin: 8px;
@@ -48,7 +48,7 @@ export const Li = styled.li`
     }
   }
 
-  ${Notas} {
+  ${S.Notas} {
     margin: 0 8px 8px;
     font-weight: 900;
 
@@ -80,54 +80,52 @@ export const ConteudoPopup = styled.div`
     background-color: rgb(0, 0, 0, 0.8);
   }
 
-  ${Card} {
+  ${S.Card} {
     max-width: 1024px;
-    height: 344px;
+    max-height: 344px;
     background-color: ${Cores.principal};
     color: ${Cores.branca};
     display: grid;
+    column-gap: 24px;
     grid-template-columns: 1fr 2fr;
     z-index: 1;
+    position: relative;
 
     .cardContainer {
-      position: relative;
+      margin: 32px 32px 0 0;
+
+      @media (max-width: ${tamanhosTela.tablet}) {
+        margin: 16px 16px 16px 0;
+        height: 100px;
+      }
 
       @media (max-width: ${tamanhosTela.celular}) {
-        height: 265px;
+        height: 100%;
+        margin-top: 0;
+        margin: 0 16px 16px 16px;
       }
     }
 
     @media (max-width: ${tamanhosTela.tablet}) {
       width: 80%;
-      height: 45%;
+      height: auto;
+      column-gap: 16px;
     }
     @media (max-width: ${tamanhosTela.celular}) {
-      display: inline;
-      height: 450px;
-      position: relative;
-    }
-  }
-
-  ${Notas} {
-    margin: 32px 0 16px 0;
-
-    @media (max-width: ${tamanhosTela.tablet}) {
-      margin: 16px 0 16px 0;
-    }
-
-    @media (max-width: ${tamanhosTela.celular}) {
-      margin: 0 0 16px 16px;
+      display: table;
     }
   }
 
   img {
-    max-width: 280px;
-    height: 100%;
-    max-height: 280px;
+    height: auto;
+    width: 100%;
+    max-width: 300px;
     margin: 32px 0 32px 32px;
     object-fit: cover;
+    display: flex;
 
     &:last-child {
+      max-width: 16px;
       height: 16px;
       position: absolute;
       top: 0;
@@ -137,30 +135,40 @@ export const ConteudoPopup = styled.div`
 
       @media (max-width: ${tamanhosTela.tablet}) {
         height: 16px;
-        top: 0px;
+        top: 0;
         cursor: pointer;
       }
 
       @media (max-width: ${tamanhosTela.celular}) {
-        width: 16px;
-        height: 16px;
-        bottom: 0;
-        top: 0;
+        width: 8px;
+        height: 8px;
         cursor: pointer;
       }
     }
 
     @media (max-width: ${tamanhosTela.tablet}) {
-      max-width: 85%;
-      height: 85%;
+      width: 200px;
+      height: 200px;
       margin: 16px 0 16px 16px;
     }
 
     @media (max-width: ${tamanhosTela.celular}) {
-      max-width: 100%;
-      height: 40%;
+      width: 100%;
+      height: 50%;
       margin: 0;
       padding: 16px;
+      box-sizing: content-box;
+    }
+  }
+
+  h3 {
+    margin: 0 0 16px 0;
+
+    @media (max-width: ${tamanhosTela.tablet}) {
+      margin-bottom: 8px;
+    }
+    @media (max-width: ${tamanhosTela.celular}) {
+      margin-left: 0;
     }
   }
 
@@ -170,21 +178,24 @@ export const ConteudoPopup = styled.div`
     }
   }
 
-  ${Serve} {
+  ${S.Serve} {
+    @media (max-width: ${tamanhosTela.tablet}) {
+      margin-top: 8px;
+    }
     @media (max-width: ${tamanhosTela.celular}) {
-      margin-left: 16px;
+      margin-left: 0;
     }
   }
 
-  ${SobrePrato} {
+  ${S.SobrePrato} {
     max-width: 656px;
-    margin: 0 32px 0 0;
+    margin: 0;
     font-weight: 400;
     color: ${Cores.branca};
     -webkit-box-orient: inherit;
 
     @media (max-width: ${tamanhosTela.celular}) {
-      padding-left: 16px;
+      padding-left: 0;
     }
   }
 
@@ -193,16 +204,11 @@ export const ConteudoPopup = styled.div`
       background-color: ${Cores.amarela};
       color: ${Cores.principal};
       padding: 4px 7px 4px 7px;
-      position: absolute;
-      bottom: 0;
-      margin: 0 0 59px 0;
-
-      @media (max-width: ${tamanhosTela.tablet}) {
-        margin: 0 0 20px 0;
-      }
+      margin: 16px 0 0 0;
 
       @media (max-width: ${tamanhosTela.celular}) {
-        margin: 0 0 16px 16px;
+        margin-top: 16px;
+        position: static;
       }
     }
   }

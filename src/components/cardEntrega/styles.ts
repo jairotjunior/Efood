@@ -28,6 +28,12 @@ export const FormEnderecoEntrega = styled.div`
     font-weight: 700;
     font-size: 16px;
   }
+
+  p {
+    background-color: red;
+    text-align: center;
+    margin-top: 10px;
+  }
 `
 export const CamposCepNum = styled.div`
   display: flex;
@@ -192,4 +198,7 @@ export const Botao = styled.div`
   border: none;
   text-align: center;
   cursor: pointer;
+`
+export const AvisoErro = styled.small`
+  font-size: 14px;
 `

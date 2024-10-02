@@ -17,15 +17,65 @@ import { formataPreco, somaTotal } from '../../util'
 
 import { Overlay } from '../cart/styles'
 import * as S from './styles'
+import { useState } from 'react'
 
 export const EnderecoEntrega = () => {
   const [purchase, { isSuccess, data }] = usePurchaseMutation()
   const dispatch = useDispatch()
+  const [erro, setErro] = useState<string | null>(null)
 
   const { etapa, items } = useSelector((state: RootReducer) => state.garcon)
 
   const avancaPagamento = () => {
+    console.log(form.values.cep.length)
+    console.log(form.values.numero.length)
+    if (form.values.nome.length <= 3) {
+      setErro('Favor preencher o campo Nome')
+      return
+    }
+    if (form.values.endereco.length <= 3) {
+      setErro('Favor preencher o campo Endereco')
+      return
+    }
+    if (form.values.cidade.length <= 3) {
+      setErro('Favor preencher o campo Cidade')
+      return
+    }
+    if (form.values.cep.length <= 8) {
+      setErro('Favor preencher o campo Cep')
+      return
+    }
+    if (form.values.numero.length <= 1) {
+      setErro('Favor preencher o campo Número')
+      return
+    }
     dispatch(avancaEtapa())
+    setErro('')
+  }
+
+  const finalizaPedido = () => {
+    if (!form.touched.nomeCartao) {
+      setErro('Informe o nome que consta no cartão')
+      return
+    }
+    if (!form.touched.numCartao) {
+      setErro('Número do cartão é obrigatório')
+      return
+    }
+    if (!form.touched.cvv) {
+      setErro('Informe os 3 número no verso do cartão')
+      return
+    }
+    if (!form.touched.mesVencimento) {
+      setErro('Insira o mês de vencimento')
+      return
+    }
+    if (!form.touched.anoVencimento) {
+      setErro('Insira o ano de vencimento')
+      return
+    }
+    dispatch(avancaEtapa())
+    setErro(null)
   }
 
   const retornaCarrinho = () => {
@@ -58,37 +108,29 @@ export const EnderecoEntrega = () => {
       anoVencimento: ''
     },
     validationSchema: Yup.object({
-      nome: Yup.string()
-        .min(5, 'Digite o nome completo')
-        .required('O campo é obrigatório'),
-      endereco: Yup.string()
-        .min(5, 'Digite o endereço')
-        .required('O campo é obrigatório'),
-      cidade: Yup.string()
-        .min(5, 'Digite a cidade')
-        .required('O campo é obrigatório'),
-      cep: Yup.string()
-        .min(9, 'CEP inválido, faltando números')
-        .required('O campo é obrigatório'),
-      numero: Yup.number()
-        .min(0, 'Digite o número')
-        .required('O campo é obrigatório'),
+      nome: Yup.string().min(5, 'Digite o nome completo'),
+      endereco: Yup.string().min(5, 'Digite o endereço'),
+      cidade: Yup.string().min(5, 'Digite a cidade'),
+      cep: Yup.string(),
+      numero: Yup.string().min(1, 'Digite o número'),
       complemento: Yup.string().min(0, 'Digite caso tenha complemento'),
-      nomeCartao: Yup.string()
-        .min(5, 'Digite o nome impresso no cartão')
-        .required('O campo é obrigatório para a realização do pagamento'),
-      numCartao: Yup.string()
-        .min(16, 'Número inserido incorreto, verifique seu cartão')
-        .required('O campo é obrigatório para a realização do pagamento'),
-      cvv: Yup.string()
-        .min(3, 'Digite os número que consta no verso do cartão')
-        .required('O campo é obrigatório para a realização do pagamento'),
-      mesVencimento: Yup.string()
-        .min(2, 'Digite o vencimento impresso no cartão')
-        .required('O campo é obrigatório para a realização do pagamento'),
-      anoVencimento: Yup.string()
-        .min(4, 'Digite o ano de vencimento impresso no cartão')
-        .required('O campo é obrigatório para a realização do pagamento')
+      nomeCartao: Yup.string().min(5, 'Digite o nome impresso no cartão'),
+      numCartao: Yup.string().min(
+        16,
+        'Número inserido incorreto, verifique seu cartão'
+      ),
+      cvv: Yup.string().min(
+        3,
+        'Digite os número que consta no verso do cartão'
+      ),
+      mesVencimento: Yup.string().min(
+        2,
+        'Digite o vencimento impresso no cartão'
+      ),
+      anoVencimento: Yup.string().min(
+        4,
+        'Digite o ano de vencimento impresso no cartão'
+      )
     }),
     onSubmit: (values) => {
       purchase({
@@ -125,8 +167,11 @@ export const EnderecoEntrega = () => {
     const campoPreenchido = fieldName in form.touched
     const campoErro = fieldName in form.errors
 
-    if (campoPreenchido && campoErro) return message
-    return ''
+    if (campoPreenchido && campoErro) {
+      return ''
+    } else {
+      return message
+    }
   }
 
   return (
@@ -172,7 +217,6 @@ export const EnderecoEntrega = () => {
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
                 />
-                <small>{validandoCampos('nome', form.errors.nome)}</small>
               </S.CamposForm>
               <S.CamposForm>
                 <label htmlFor="endereco">Endereço</label>
@@ -184,9 +228,6 @@ export const EnderecoEntrega = () => {
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
                 />
-                <small>
-                  {validandoCampos('endereco', form.errors.endereco)}
-                </small>
               </S.CamposForm>
               <S.CamposForm>
                 <label htmlFor="cidade">Cidade</label>
@@ -198,7 +239,6 @@ export const EnderecoEntrega = () => {
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
                 />
-                <small>{validandoCampos('cidade', form.errors.cidade)}</small>
               </S.CamposForm>
               <S.CamposCepNum>
                 <S.CamposForm>
@@ -212,7 +252,6 @@ export const EnderecoEntrega = () => {
                     onBlur={form.handleBlur}
                     mask="99999-999"
                   />
-                  <small>{validandoCampos('cep', form.errors.cep)}</small>
                 </S.CamposForm>
                 <S.CamposForm>
                   <label htmlFor="numero">Número</label>
@@ -224,7 +263,6 @@ export const EnderecoEntrega = () => {
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
                   />
-                  <small>{validandoCampos('numero', form.errors.numero)}</small>
                 </S.CamposForm>
               </S.CamposCepNum>
               <S.CamposForm>
@@ -237,10 +275,8 @@ export const EnderecoEntrega = () => {
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
                 />
-                <small>
-                  {validandoCampos('complemento', form.errors.complemento)}
-                </small>
               </S.CamposForm>
+              <p>{erro ? <S.AvisoErro>{erro}</S.AvisoErro> : null}</p>
               <S.BotoesEntrega>
                 <button type="button" onClick={avancaPagamento}>
                   Continuar com o pagamento
@@ -340,8 +376,12 @@ export const EnderecoEntrega = () => {
                   </small>
                 </S.CamposFormPagamento>
               </S.CamposFormCartao>
+              <p>{erro ? <S.AvisoErro>{erro}</S.AvisoErro> : null}</p>
               <S.BotoesPagamento>
-                <button type="submit" onClick={avancaPagamento}>
+                <button
+                  type={erro === null ? 'submit' : 'button'}
+                  onClick={finalizaPedido}
+                >
                   Finalizar pagamento
                 </button>
                 <button type="button" onClick={retornaFormEntrega}>
